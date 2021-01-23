@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+    $(document).ready(function(){
+        $(".btn").click(function(){
+            $("#myModal").modal('show');
+        });
+
+    $("select#bgcolor1").change(function(){
+        var selectedColor = $(this).children("option:selected").val();
+        if(selectedColor=="red"){
+        	$("body").css({"background-color": "red"});
+        } else if(selectedColor=="black"){
+        	$("body").css({"background-color": "black"});
+        }else if(selectedColor=="gray"){
+        	$("body").css({"background-color": "#555"});
+        }else if(selectedColor=="white"){
+        	$("body").css({"background-color": "#fff"});
+        }
+    });
+    $("select#fontcolor").change(function(){
+        var selectedColor = $(this).children("option:selected").val();
+        if(selectedColor=="yellow"){
+        	$("body").css({"color": "#FFFF00"});
+        	$(".form-control").css({"color": "#FFFF00"});
+        } else if(selectedColor=="lime"){
+        	$("body").css({"color": "#00FF00"});
+        	$(".form-control").css({"color": "#00FF00"});
+        }else if(selectedColor=="magenta"){
+        	$("body").css({"color": "#FF00FF"});
+        	$(".form-control").css({"color": "#FF00FF"});
+        }else if(selectedColor=="green"){
+        	$("body").css({"color": "#008000"});
+        	$(".form-control").css({"color": "#008000"});
+        	
+        }
+    });
+  });
+
+  function ValidationForm(){
+    var error=0;
+
+    var a=document.forms["form1"]["fnm"].value;
+    var reg1=/^[A-Za-z]*$/;
+    document.getElementById('fname_error').innerHTML='';
+    if(a=='' || a==null){
+      error++;
+      document.getElementById('fname_error').innerHTML = 'First Name must be filled out';
+    } else if(reg1.test(a) == false || a.length<2 || a.length>10){
+      error++;
+      document.getElementById('fname_error').innerHTML = 'Enter Your Proper name';
+    }
+
+    var b=document.forms["form1"]["lnm"].value;
+    document.getElementById('lname_error').innerHTML='';
+    if(b=='' || b==null){
+      error++;
+      document.getElementById('lname_error').innerHTML = 'Last Name must be filled out';
+    }else if(reg1.test(b) == false || b.length<2 || b.length>10){
+      error++;
+      document.getElementById('lname_error').innerHTML = 'Enter Your Proper name';
+    }
+
+    var c=document.forms["form1"]["address"].value;
+    document.getElementById('addr_error').innerHTML='';
+    if(c=='' || c==null){
+      error++;
+      document.getElementById('addr_error').innerHTML = 'Address must be filled out';
+    }else if(c.length<10 || c.length>50){
+      error++;
+      document.getElementById('addr_error').innerHTML = 'Enter Your Proper Address';
+    }
+
+    var d=document.forms["form1"]["gender"].value;
+    document.getElementById('gender_error').innerHTML='';
+    if(!(d=='male' || d=='female')){
+      error++;
+      document.getElementById('gender_error').innerHTML = 'Select Gender.';
+    }
+
+    var e=document.forms["form1"]["hobby"].value;
+    var e1=document.getElementById("c1");
+    var e2=document.getElementById("c2");
+    document.getElementById('hobby_error').innerHTML='';
+    if(e1.checked == false && e2.checked == false){
+      error++;
+      document.getElementById('hobby_error').innerHTML = 'Select Hobby.';
+    }
+
+   var f=document.forms["form1"]["bdate"].value;
+    document.getElementById('bdate_error').innerHTML='';
+    if(f=='' || f==null){
+      error++;
+      document.getElementById('bdate_error').innerHTML = 'BirthDate must be filled out';
+    }else {
+      var bdate=f.split('/');
+      var idate=new Date(bdate[2] + "/" + bdate[1] + "/" + bdate[0]);
+      var cdate=new Date();
+      if(cdate.getFullYear()-idate.getFullYear()  < 18){
+        error++;
+        document.getElementById('bdate_error').innerHTML = 'Your age must be 18.';
+      }
+    }
+
+    var g=document.forms["form1"]["course"].value;
+    document.getElementById('course_error').innerHTML='';
+    if(g == "select"){
+      error++;
+      document.getElementById('course_error').innerHTML = 'Select a Course';
+    }
+
+    var h=document.forms["form1"]["email"].value;
+    document.getElementById('email_error').innerHTML='';
+    if(h=='' || h==null){
+      error++;
+      document.getElementById('email_error').innerHTML = 'Email must be filled out';
+    }else if(h.length<10 || h.length>30){
+      error++;
+      document.getElementById('email_error').innerHTML = 'Enter Your Proper EmailID';
+    } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(h) == false){
+      error++;
+      document.getElementById('email_error').innerHTML = 'Enter Your Proper EmailID';
+    }
+
+    var i=document.forms["form1"]["mno"].value;
+    var reg=/^[0-9]*[.]?[0-9]*$/;
+    document.getElementById('mno_error').innerHTML='';
+    if(i=='' || i==null){
+      error++;
+      document.getElementById('mno_error').innerHTML = 'Mobile Number must be filled out';
+    }else if(reg.test(i) == false || i.length!=10){
+      error++;
+      document.getElementById('mno_error').innerHTML = 'Enter Your Proper Mobile No.';
+    }
+
+    var j=document.forms["form1"]["pwd"].value;
+    var reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,10}$/;
+    document.getElementById('pwd_error').innerHTML='';
+    if(j=='' || j==null){
+      error++;
+      document.getElementById('pwd_error').innerHTML = 'Password must be filled out';
+    }else if(reg.test(j) == false){
+      error++;
+      document.getElementById('pwd_error').innerHTML = 'Enter Your Proper Password';
+    } 
+
+    var k=document.forms["form1"]["cpwd"].value;
+    document.getElementById('cpwd_error').innerHTML='';
+    if(k=='' || k==null){
+      error++;
+      document.getElementById('cpwd_error').innerHTML = 'Password must be filled out';
+    }else if(k != j){
+      error++;
+      document.getElementById('cpwd_error').innerHTML = 'Your both password are different';
+    }    
+
+    var l=document.forms["form1"]["photo"].value;
+    var allowedExtensions =/(\.jpg|\.jpeg)$/i;
+    var maxfilesize = 1024 * 1024;
+    document.getElementById('photo_error').innerHTML='';
+    if(l=='' || l==null){
+      error++;
+      document.getElementById('photo_error').innerHTML = 'Photo Must Be Upload';
+    } else if (!allowedExtensions.exec(l)) { 
+      error++;
+      document.getElementById('photo_error').innerHTML = 'Photo Must Be .jpg format';
+    } 
+
+    if(error>0) {
+        return false;
+    }
+    return true;
+  }
+</script>
+<style>
+    .marginremove{
+		margin:0px;
+	}
+    .bs-example{
+        margin: 10px;
+        text-align: right;
+		padding-bottom:217px;
+    }
+    .fullwidth{
+    	width: 95%;
+    	height: 50px;
+    }
+    .header {
+    	height: 100px;
+    	margin: 10px;
+    }
+    .btn{
+    	height: 50px;
+    	padding: 10px;
+    }
+    .color1{
+    	color: #495057 !important;
+    }
+    .error{
+    color: red;
+  }
+</style>
+</head>
+<body>
+	<div class="bs-example">
+	<div class="container-fluid">
+		<div class="row marginremove">
+			<div class="col-12 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			    <SELECT id="bgcolor1" class="fullwidth form-control color1">
+			    	<option value="" disabled selected>Background Color</option>
+			    	<option value="red">red</option>
+			    	<option value="black">Black</option>
+			    	<option value="gray">Gray</option>
+			    	<option value="white">white</option>
+			    </SELECT>
+			</div>
+			<div class="col-12 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			    <SELECT id="fontcolor" class="fullwidth form-control color1">
+			    	<option value="" disabled selected>Font Color</option>
+			    	<option value="yellow">Yellow</option>
+			    	<option value="lime">Lime</option>
+			    	<option value="magenta">Magenta</option>
+			    	<option value="green">Green</option>
+			    </SELECT>
+			</div>
+			<div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			</div>
+			<div class="col-12 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+				<button type="button" class="btn btn-lg btn-primary form-control">ADD USER</button>
+			</div>
+		</div>
+	</div>
+</div>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+    	<form class="form-horizontal"  action="demo.php" id="form1" name="form1" onsubmit="return ValidationForm()">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"></b>Registration</b></h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+               		<div class="modal-body">
+                    <div class="form-group">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">FirstName:</label>
+                            <input type="text" id="fnm" class="form-control" placeholder="Enter First Name" name="fnm">
+                            <span class="error"><p id="fname_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">LastName:</label>
+                            <input type="text" id="lnm" class="form-control" placeholder="Enter Last Name" name="lnm">
+                            <span class="error"><p id="lname_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label" for="fname">Address:</label>
+                            <textarea rows="5" class="form-control fullwidth" cols="20" placeholder="Enter Address" name="address"></textarea>
+                            <span class="error"><p id="addr_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6 textcenter">
+                            <label class="control-label" for="fname">Gender:</label>
+                            <div class="form-check form-check">
+                              <input class="form-check-input" type="radio" id="inlineCheckbox1" value="male" name="gender">
+                              <label class="form-check-label labelfield" for="inlineCheckbox1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" id="inlineCheckbox2" value="female" name="gender">
+                              <label class=" labelfield form-check-label " for="inlineCheckbox2">Female</label>
+                            </div>
+                            <span class="error"><p id="gender_error"></p></span>
+                          </div> 
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6 textcenter">
+                            <label class="control-label" for="fname">Hobby:</label>
+                             <div class="form-check form-check">
+                              <input class="form-check-input" type="checkbox" id="c1" value="Traveling" name="hobby">
+                              <label class="form-check-label labelfield" for="inlineCheckbox1">Traveling</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="c2" value="Reading" name="hobby">
+                              <label class=" labelfield form-check-label " for="inlineCheckbox2">Reading</label>
+                            </div>
+                             <span class="error"><p id="hobby_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname" >Birthdate:</label>
+                            <input type="date" name="bdate" class="form-control" placeholder="Birthdate"> 
+                            <span class="error"><p id="bdate_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">Course:</label>
+                            <select class=" form-control" id="sel1" name="course">
+                              <option disabled selected value="select">Select Course</option>
+                              <option value="MCA">MCA</option>
+                              <option value="MBA">MBA</option>
+                              <option value="MAM">MAM</option>
+                            </select>
+                             <span class="error"><p id="course_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">Email:</label>
+                            <input type="text" name="email" class="form-control" placeholder="Email"> 
+                            <span class="error"><p id="email_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">Mobile No.:</label>
+                            <input type="text" name="mno" class="form-control"  placeholder="Mobile No."> 
+                            <span class="error"><p id="mno_error"></p></span>
+                          </div>
+                        </div>
+                      <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">Password:</label>
+                            <input type="password" class="form-control" name="pwd" placeholder="Password" > 
+                            <span class="error"><p id="pwd_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label" for="fname">ConfirmPassword:</label>
+                            <input type="password" class="form-control" name="cpwd" placeholder="Confirm Password" > 
+                            <span class="error"><p id="cpwd_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label" for="fname">Photo:</label>
+                            <input type="File" class="fullwidth form-control" name="photo" placeholder="Upload Photo" >
+                            <span class="error"><p id="photo_error"></p></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="cancel" class="btn btn-secondary" data-dismiss="modal" id="cancel1">Cancel</button>
+					<button type="submit" class="btn btn-primary " id="formbtn">Save </button>
+                </div>
+            </div>
+          </div>
+         </form>
+     </div>
+</body>
+</html>
+

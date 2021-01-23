@@ -1,0 +1,77 @@
+.modal-backdrop
+{
+  display: none;
+}
+.bs-example{
+    margin: 10px;
+    text-align: right;
+}
+
+.fullwidth{
+   	width: 95%;
+   	height: 50px;
+}
+
+.header {
+  	height: 100px;
+  	margin: 10px;
+}
+
+.btn-success{
+    height: 50px !important;
+    padding: 10px !important;
+    margin-top: 33px;
+    text-align: center;
+    font-weight: bolder;
+    color: #fff;
+}
+
+.color1{
+   	color: #495057 !important;
+}
+
+.error{
+    color: red;
+}
+
+.data {
+    text-align: left !important;
+}
+
+.marginremove{
+  margin: 0px;
+}
+
+tr:hover {
+  background-color: #dee2e6;
+  color: #403E10;
+  font-weight: bold;
+}
+
+
+.modal {
+    overflow-y: auto !important;
+}
+
+.btn-secondary .btn-primary{
+  height: 30px;
+  padding: 2px;
+}
+
+.noborder {
+  border :0px;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 0px !important;
+  margin-top: 3px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.image {
+  margin-top:10px;
+}

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+    $(document).ready(function(){
+        $(".btn").click(function(){
+            $("#myModal").modal('show');
+        });
+
+    $("select#bgcolor1").change(function(){
+        var selectedColor = $(this).children("option:selected").val();
+        if(selectedColor=="red"){
+        	$("body").css({"background-color": "red"});
+        } else if(selectedColor=="black"){
+        	$("body").css({"background-color": "black"});
+        }else if(selectedColor=="gray"){
+        	$("body").css({"background-color": "#555"});
+        }else if(selectedColor=="white"){
+        	$("body").css({"background-color": "#fff"});
+        }
+    });
+    $("select#fontcolor").change(function(){
+        var selectedColor = $(this).children("option:selected").val();
+        if(selectedColor=="yellow"){
+        	$("body").css({"color": "#FFFF00"});
+        	$(".form-control").css({"color": "#FFFF00"});
+        } else if(selectedColor=="lime"){
+        	$("body").css({"color": "#00FF00"});
+        	$(".form-control").css({"color": "#00FF00"});
+        }else if(selectedColor=="magenta"){
+        	$("body").css({"color": "#FF00FF"});
+        	$(".form-control").css({"color": "#FF00FF"});
+        }else if(selectedColor=="green"){
+        	$("body").css({"color": "#008000"});
+        	$(".form-control").css({"color": "#008000"});
+        	
+        }
+    });
+
+     $("#form1").validate({
+      rules: {
+         fnm: {
+         	nmcheck :true
+         },
+         lnm: {
+         	nmcheck :true
+         },
+         address :{
+         	addrcheck: true
+         },
+         gender :{
+          gencheck :true
+         },
+         hobby :{
+          hbycheck: true
+         },
+         bdate : {
+          bdatecheck :true
+        },
+        course : {
+          curcheck : true
+        },
+        email: {
+          emailcheck : true
+        },
+        mno : { 
+         	mnocheck: true,
+        },
+        pwd :{
+        	pwcheck:true,
+        },
+        cpwd : {
+         	equalTo: "#pwd"
+        },
+        photo : {
+          photocheck :true
+        }
+      },
+
+      messages: {
+		   fnm: {
+		   	nmcheck : 'Enter your proper name'
+		   },
+		   lnm: {
+		    nmcheck : 'Enter your proper name'
+		   },
+		   address: {
+		   	addrcheck : 'Enter your proper Address'
+		   },
+       gender : {
+        gencheck : "Select a Gender."
+       },
+       hobby : {
+        hbycheck : "Select a Hobby."
+       },
+		   bdate : {
+        bdatecheck : "Enter age above 18."
+       },
+       course : {
+          curcheck : 'This field is required'
+       },
+		   email: {
+	       emailcheck : 'Enter proper Email ID'
+	     },
+		   mno : { 
+	     	mnocheck :'Enter Only Digits'
+	     },
+		   pwd: {
+        pwcheck:"Enter proper password"
+       },
+		   cpwd : {
+	     	equalTo: "Both Password Are Different"
+	     },
+	     photo : {
+        photocheck :'Upload only .jpg format.'
+	     }
+		},
+
+		submitHandler: function(form) {
+		   form.submit();
+		}
+   });
+     
+
+     $.validator.addClassRules('ClassRequire', {
+        required: true ,
+    });
+
+    $.validator.addMethod("nmcheck",function(a){
+    	 var reg1=/^[A-Za-z]*$/;
+       if(reg1.test(a) == false || a.length<2 || a.length>10){
+        return false;
+      }
+      return true;
+    });
+
+    $.validator.addMethod("addrcheck",function(a){
+       if(a.length<10 || a.length>50){
+        return false;
+      }
+      return true;
+    });
+
+    $.validator.addMethod("gencheck",function(d){
+      if(!(d=='male' || d=='female')){
+        return false;
+      }
+      return true;
+    });
+
+    $.validator.addMethod("hbycheck",function(e){
+      var e1=document.getElementById("c1");
+      var e2=document.getElementById("c2");
+      if(e1.checked == false && e2.checked == false){
+        return false;
+      }
+      return true;
+    });
+
+     $.validator.addMethod("bdatecheck",function(f){
+        var bdate=f.split('/');
+        var idate=new Date(bdate[2] + "/" + bdate[1] + "/" + bdate[0]);
+        var cdate=new Date();
+        if(cdate.getFullYear()-idate.getFullYear()  < 18){
+          return false;
+        }
+        return true;
+     });
+
+      $.validator.addMethod("curcheck",function(g){
+        if(g == "select"){
+          return false;
+        }
+        return true;
+      });
+
+     $.validator.addMethod("emailcheck",function(h){
+      if(h.length<10 || h.length>30){
+        return false;
+      } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(h) == false){
+        return false;
+      }
+        return true;
+     });
+
+    $.validator.addMethod("mnocheck",function(i){
+      var reg=/^[0-9]*[.]?[0-9]*$/;
+      if(reg.test(i) == false || i.length!=10){
+        return false;
+      }
+      return true;
+    });
+
+   $.validator.addMethod("pwcheck", function(value) {
+	    var reg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,10}$/;
+      if(reg.test(value) == false){
+        return false;
+      } 
+      return true;
+    });
+
+   $.validator.addMethod("photocheck", function(l) {
+    var allowedExtensions =/(\.jpg|\.jpeg)$/i;
+    var maxfilesize = 1024 * 1024;
+    document.getElementById('photo_error').innerHTML='';
+    if (!allowedExtensions.exec(l)) { 
+      return false;
+    } 
+    return true;
+   });
+});
+</script>
+<style>
+.marginremove{
+  margin:0px;
+}
+    .bs-example{
+        margin: 10px;
+        text-align: right;
+		padding-bottom:217px;
+    }
+    .fullwidth{
+    	width: 95%;
+    	height: 50px;
+    }
+    .header {
+    	height: 100px;
+    	margin: 10px;
+    }
+    .btn{
+    	height: 50px;
+    	padding: 10px;
+    }
+    .color1{
+    	color: #495057 !important;
+    }
+    .error{
+    color: red;
+  }
+</style>
+</head>
+<body>
+<div class="bs-example">
+	<div class="container-fluid">
+		<div class="row marginremove">
+			<div class="col-12 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			    <SELECT id="bgcolor1" class="fullwidth form-control color1">
+			    	<option value="" disabled selected>Background Color</option>
+			    	<option value="red">red</option>
+			    	<option value="black">Black</option>
+			    	<option value="gray">Gray</option>
+			    	<option value="white">white</option>
+			    </SELECT>
+			</div>
+			<div class="col-12 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			    <SELECT id="fontcolor" class="fullwidth form-control color1">
+			    	<option value="" disabled selected>Font Color</option>
+			    	<option value="yellow">Yellow</option>
+			    	<option value="lime">Lime</option>
+			    	<option value="magenta">Magenta</option>
+			    	<option value="green">Green</option>
+			    </SELECT>
+			</div>
+			<div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			</div>
+			<div class="col-12 col-xs-12 col-sm-2 col-md-2 col-lg-2">
+				<button type="button" class="btn btn-lg btn-primary form-control">ADD USER</button>
+			</div>
+		</div>
+	</div>
+</div>
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade" tabindex="-1">
+    	<form class="form-horizontal"  action="#" id="form1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><b> Registration </b></h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+               		<div class="modal-body">
+					
+                    <div class="form-group">
+						<div class="container-fluid">
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">FirstName:</label>
+                            <input type="text" id="fnm" class="form-control ClassRequire" placeholder="Enter First Name" name="fnm">
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">LastName:</label>
+                            <input type="text" id="lnm" class="form-control ClassRequire" placeholder="Enter Last Name" name="lnm">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label" for="fname">Address:</label>
+                            <textarea rows="5" class="form-control ClassRequire fullwidth" cols="20" placeholder="Enter Address" name="address"></textarea>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 textcenter">
+                            <label class="control-label" for="fname">Gender:</label>
+                            <div class="form-check form-check">
+                              <input class="form-check-input" type="radio" id="inlineCheckbox1" value="male" name="gender">
+                              <label class="form-check-label  labelfield" for="inlineCheckbox1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input validation_require" type="radio" id="inlineCheckbox2" value="female" name="gender" checked>
+                              <label class=" labelfield form-check-label " for="inlineCheckbox2">Female</label>
+                            </div>
+                            <span id="gender"></span>
+                          </div> 
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6 textcenter">
+                            <label class="control-label" for="fname">Hobby:</label>
+                             <div class="form-check form-check">
+                              <input class="form-check-input" type="checkbox" id="c1" value="Traveling" name="hobby" checked>
+                              <label class="form-check-label labelfield" for="inlineCheckbox1">Traveling</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="c2" value="Reading" name="hobby">
+                              <label class=" labelfield form-check-label " for="inlineCheckbox2">Reading</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname" >Birthdate:</label>
+                            <input type="date" name="bdate" class="form-control ClassRequire" placeholder="Birthdate"> 
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">Course:</label>
+                            <select class=" form-control ClassRequire" id="sel1" placeholder="Course" name="course">
+                              <option disabled selected value="select">Select Course</option>
+                              <option>MCA</option>
+                              <option>MBA</option>
+                              <option>MAM</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">Email:</label>
+                            <input type="email" name="email" class="form-control ClassRequire" placeholder="Email"> 
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">Mobile No.:</label>
+                            <input type="text" name="mno" class="form-control ClassRequire"  placeholder="Mobile No."> 
+                          </div>
+                        </div>
+                      <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">Password:</label>
+                            <input type="password" class="form-control ClassRequire" name="pwd" placeholder="Password" > 
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="control-label" for="fname">ConfirmPassword:</label>
+                            <input type="password" class="form-control ClassRequire" name="cpwd" placeholder="Confirm Password" > 
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label" for="fname">Photo:</label>
+                            <input type="File" class="fullwidth form-control ClassRequire" name="photo" placeholder="Upload Photo" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="cancel" class="btn btn-secondary" data-dismiss="modal" id="cancel1">Cancel</button>
+					<button type="submit" class="btn btn-primary " id="formbtn">Save </button>
+                </div>
+            </div>
+          </div>
+         </form>
+     </div>
+</body>
+</html>
+

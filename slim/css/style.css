@@ -1,0 +1,154 @@
+.bs-example{
+    margin: 10px;
+    text-align: right;
+}
+.b1{
+	background-color:#fff !important;
+}
+.fullwidth{
+   	width: 95%;
+   	height: 50px;
+}
+
+.header {
+  	height: 100px;
+  	margin: 10px;
+}
+
+.btn{
+
+   	padding: 10px;
+}
+.alert {
+  margin-top: 10px;
+}
+.color1{
+   	color: #495057 !important;
+}
+
+.error{
+    color: red;
+}
+
+.data {
+    text-align: center !important;
+}
+
+.subbody{
+  margin:10px;
+  background-color: #E0E0E0;
+}
+
+.title {
+  margin: 20px 0px;
+}
+
+.innerbody{
+  margin: 0px 10px 12px;
+}
+
+.titlerow{
+  background-color: #F0F0F0;
+  margin-top: 5px;
+}
+
+.subtitle{
+  color: #6c6fc1;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.add{
+  text-align: right;
+}
+
+.maincontent{
+  background-color: #F2F2F2;
+  margin-top:1px;
+  padding: 10px 0;
+}
+
+.showsearchrow{
+  margin-top:12px;
+}
+
+.showlabel{
+  margin :1px 0;
+  font-weight: 200;
+}
+
+.showrow{
+  width:60px;
+  margin-left:4px;
+}
+
+.searchlabel{
+  padding-left: 19px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.searchbox{
+  width:135px;
+}
+
+.contenttitle{
+  margin:0px;
+}
+
+ table {  
+        border-collapse: collapse;  
+      }  
+        .inline{   
+            display: inline-block;   
+            float: left;   
+        }   
+         
+    
+    .pagination {   
+        display: inline-block;   
+        float: right;
+        margin: 0px;
+    }   
+    .pagination a {   
+        font-weight:bold;   
+        font-size:18px;   
+        color: black;   
+        float: left;   
+        padding: 8px 16px;   
+        text-decoration: none;   
+        border:1px solid black;   
+    }   
+    .pagination a.active {   
+            background-color: pink;   
+    }   
+    .pagination a:hover:not(.active) {   
+        background-color: skyblue;   
+    }  
+  
+
+     #loader { 
+            border: 12px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 12px solid #444444; 
+            width: 70px; 
+            height: 70px; 
+            animation: spin 1s linear infinite; 
+
+        } 
+          
+        @keyframes spin { 
+            100% { 
+                transform: rotate(360deg); 
+            } 
+        } 
+          
+        .center { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            margin: auto; 
+        } 

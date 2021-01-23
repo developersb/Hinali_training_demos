@@ -1,0 +1,125 @@
+<html>
+<head>
+	<title>Registration</title>
+
+    <link rel="stylesheet" type="text/css" href="jquery/style.css">
+    
+</head>
+<body>
+	<div class="container">
+      <div class="row marginremove">
+        <div class="col-xs-12 col-sm-2 col-md-1 col-lg-2 col-xl-3">
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-10 col-lg-8 col-xl-6">
+            <div class="card">
+                <form class="box form-horizontal" id="mainregi" name="mainregi" method="post">
+                    <h1>REGISTRATION</h1>
+                    <p class="text-muted"> Please enter your Details!</p>
+                    <div class="form-group">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">First Name:</label>
+                            <input type="text" id="fnm" placeholder="Enter First Name" name="fnm">
+                            <span class="error"><p id="fname_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Last Name:</label>
+                            <input type="text" id="lnm" placeholder="Enter Last Name" name="lnm">
+                            <span class="error"><p id="lname_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label labelleft" for="fname">Address:</label>
+                            <textarea rows="5" class="fullwidth" cols="20" placeholder="Enter Address" name="address"></textarea>
+                            <span class="error"><p id="addr_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6 textcenter">
+                            <label class="control-label labelleft" for="fname">Gender:</label>
+                             <div class="radio">
+                              <label><input type="radio" name="gender" id="male" value="Male">Male</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="gender" id="female" value="Female">Female</label>
+                            </div>
+                            <span class="error"><p id="gender_error"></p></span>
+                          </div> 
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6 textcenter">
+                            <label class="control-label labelleft" for="fname">Hobby:</label>
+                             <label class="checkbox-inline">
+                              <input type="checkbox" value="Reading" name="hobby" id="reading" > Reading
+                            </label>
+                            <label class="checkbox-inline">
+                              <input type="checkbox" value="Traveling" name="hobby" id="traveling"> Traveling
+                            </label>
+                          </div>
+                          <span class="error"><p id="hobby_error"></p></span>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Birthdate:</label>
+                            <input type="date"  placeholder="Birthdate" name="bdate">
+                            <span class="error"><p id="bdate_error"></p></span> 
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Course:</label>
+                            <select class="fullwidth" id="sel1" placeholder="Course" name="course">
+                              <option>MCA</option>
+                              <option>MBA</option>
+                              <option>MAM</option>
+                            </select>
+                            <span class="error"><p id="course_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Email:</label>
+                            <input type="email"  placeholder="Email" name="email"> 
+                            <span class="error"><p id="email_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Mobile No.:</label>
+                            <input type="text"  placeholder="Mobile No." name="mno"> 
+                            <span class="error"><p id="mno_error"></p></span>
+                          </div>
+                        </div>
+                      <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Password:</label>
+                            <input type="password"  placeholder="Password" name="pwd"> 
+                            <span class="error"><p id="pwd_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <label class="control-label labelleft" for="fname">Confirm Password:</label>
+                            <input type="password"  placeholder="Confirm Password" name="cpwd"> 
+                            <span class="error"><p id="cpwd_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label labelleft" for="fname">Photo:</label>
+                            <input type="File" class="fullwidth"  placeholder="Upload Photo" name="photo">
+                            <span class="error"><p id="photo_error"></p></span>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <input type="submit" name="save" value="SAVE" id="save"> 
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <input type="reset" name="" value="CLEAR" href="#"> 
+                          </div>
+                        </div>
+                        <a class="forgot text-muted" href="login.html" id="lgacc">Already Account??</a>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

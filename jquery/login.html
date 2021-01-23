@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="js/ajax.js"></script>
+   <link rel="stylesheet" type="text/css" href="jquery/style.css">
+</head>
+<body>
+	<div class="container-fluid">
+      <div class="row ">
+        <div class="col-xs-12 col-sm-1 col-md-2 col-lg-4 ">
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-4">
+         
+            <div class="card">
+                <form class="box form-horizontal" id="loginform"  name="loginform">
+                    <h1>Login</h1>
+                    <div class="form-group">
+                      <div class="container-fluid">
+                        <center>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label labelcenter">Email:</label>
+                            <input type="email" name="email" id="email"> 
+                            <span class="error"><p id="email_error"></p></span>
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-12">
+                            <label class="control-label labelcenter">Password:</label>
+                            <input type="password" name="pwd" id="pwd"> 
+                            <span class="error"><p id="pwd_error"></p></span>
+                          </div>
+                        </div>
+                        <span class="error"><p id="login_error"></p></span>
+                        <div class="row">
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <input type="submit" id="logincheck" value="LOGIN"> 
+                          </div>
+                          <div class="col-12 col-xs-12 col-sm-6 col-md-6 col-xl-6">
+                            <input type="reset"  value="CLEAR"> 
+                          </div>
+                        </div>
+                        </center>
+                        <a class="forgot text-muted" href="#" id="crtacc">Create Account??</a>
+                      </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
